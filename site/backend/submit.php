@@ -4,7 +4,7 @@
  * --------------------------------------------------------------
  *  정적 사이트의 상담신청 폼(action="/backend/submit.php", method=post)이
  *  이 파일로 데이터를 전송합니다.
- *  원본 Haroop 폼 필드명을 그대로 사용:
+ *  원본 JK위드미 폼 필드명을 그대로 사용:
  *      text_2   = 성함
  *      text_4   = 연락처/SNS ID
  *      select_5 = 문의내용(상담부위)
@@ -39,7 +39,7 @@ function respond(bool $ok, string $message, array $config): void
 
     if ($isAjax) {
         header('Content-Type: application/json; charset=utf-8');
-        // 'data' 키는 원본 Haroop 프론트 JS(res.data) 호환용, 'message' 는 범용
+        // 'data' 키는 원본 JK위드미 프론트 JS(res.data) 호환용, 'message' 는 범용
         echo json_encode(
             ['success' => $ok, 'data' => $message, 'message' => $message],
             JSON_UNESCAPED_UNICODE

@@ -1,7 +1,7 @@
 /**
  * JK위드미 - 상담신청 폼 → 백엔드 연결 스크립트
  * -----------------------------------------------------------------
- *  원본은 워드프레스 Haroop 플러그인이 폼을 wp-admin/admin-ajax.php 로
+ *  원본은 워드프레스 JK위드미 플러그인이 폼을 wp-admin/admin-ajax.php 로
  *  전송했지만, 정적 사이트에는 그 주소가 없습니다.
  *  이 스크립트는 전송 대상 주소만 우리 백엔드(/backend/submit.php)로
  *  바꿔줍니다. 폼 마크업·디자인·검증 UI 는 원본 그대로 유지됩니다.
@@ -18,13 +18,13 @@
     var ENDPOINT = '/backend/submit.php';
 
     function apply() {
-        // 1) Haroop 전역 객체의 전송 주소를 우리 백엔드로 교체
-        if (window.hdbc_ajax_obj) {
-            window.hdbc_ajax_obj.ajax_url = ENDPOINT;
+        // 1) JK위드미 전역 객체의 전송 주소를 우리 백엔드로 교체
+        if (window.jkwf_ajax_obj) {
+            window.jkwf_ajax_obj.ajax_url = ENDPOINT;
         }
 
         // 2) 각 상담 폼에 스팸 방지용 허니팟 필드 추가(사람 눈엔 안 보임)
-        var forms = document.querySelectorAll('form.hdbc-form');
+        var forms = document.querySelectorAll('form.jkwf-form');
         for (var i = 0; i < forms.length; i++) {
             var f = forms[i];
             if (f.querySelector('input[name="website"]')) {
@@ -40,8 +40,8 @@
                 'position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;';
             f.appendChild(hp);
 
-            // 3) 만약 Haroop JS 가 로드되지 않은 페이지라면(비상용) 순수 POST 로 폴백
-            if (!window.jQuery || !window.hdbc_ajax_obj) {
+            // 3) 만약 JK위드미 JS 가 로드되지 않은 페이지라면(비상용) 순수 POST 로 폴백
+            if (!window.jQuery || !window.jkwf_ajax_obj) {
                 f.setAttribute('action', ENDPOINT);
                 f.setAttribute('method', 'post');
             }

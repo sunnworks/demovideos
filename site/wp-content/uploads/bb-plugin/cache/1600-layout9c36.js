@@ -2120,7 +2120,7 @@ jQuery(function($) {
 
 
 ;document.addEventListener("DOMContentLoaded", function () {
-    const slider = document.querySelector(".haroop-rss-grid");
+    const slider = document.querySelector(".jkw-rss-grid");
     if (!slider) return;
 
     let scrollAmount = 0;

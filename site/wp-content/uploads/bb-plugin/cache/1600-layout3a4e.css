@@ -11790,8 +11790,8 @@ div.fl-node-u8yoctmaji9q .pp-heading-content .pp-heading-separator.icon_only spa
 
 /* 카테고리 링크 (a 또는 .url): 기본 색상 적용 및 배경 제거 (ID 추가됨) */
 /* 기본 색상을 #957a5d으로 변경 */
-#my-custom-rss-slider .haroop-rss-card-footer a, 
-#my-custom-rss-slider .haroop-rss-card-footer .url { 
+#my-custom-rss-slider .jkw-rss-card-footer a, 
+#my-custom-rss-slider .jkw-rss-card-footer .url { 
     color: #957a5d !important; 
     display: block !important;
     /* 💥 링크 요소에 혹시 모를 배경이 있다면 제거 */
@@ -11800,8 +11800,8 @@ div.fl-node-u8yoctmaji9q .pp-heading-content .pp-heading-separator.icon_only spa
 
 /* ✅ 카드 Hover 시 카테고리(링크) 색상 변경 규칙 (ID 추가됨) */
 /* Hover 색상도 #957a5d으로 변경 */
-#my-custom-rss-slider .haroop-rss-card:hover .haroop-rss-card-footer a,
-#my-custom-rss-slider .haroop-rss-card:hover .haroop-rss-card-footer .url {
+#my-custom-rss-slider .jkw-rss-card:hover .jkw-rss-card-footer a,
+#my-custom-rss-slider .jkw-rss-card:hover .jkw-rss-card-footer .url {
     color: #957a5d !important; /* Hover 시 색상을 #957a5d으로 변경 */
     /* 팁: Hover 시 배경색을 다시 추가하여 버튼 효과를 줄 수도 있습니다. */
     /* background: rgba(0, 0, 0, 0.1); */ 
@@ -11944,16 +11944,16 @@ div.fl-node-u8yoctmaji9q .pp-heading-content .pp-heading-separator.icon_only spa
   /* ✅ 카드 Hover 시 카테고리(링크) 색상 변경 규칙 */
   /* --- 5. 반응형 설정 --- */
 }
-.fl-node-8thbn9vq50ix .haroop-rss-feed {
+.fl-node-8thbn9vq50ix .jkw-rss-feed {
   /* 외부 컨테이너 overflow: hidden 유지 */
   overflow: hidden !important;
   padding: 40px 0 !important;
   position: relative !important;
 }
-.fl-node-8thbn9vq50ix .haroop-rss-grid::-webkit-scrollbar {
+.fl-node-8thbn9vq50ix .jkw-rss-grid::-webkit-scrollbar {
   display: none !important;
 }
-.fl-node-8thbn9vq50ix .haroop-rss-grid {
+.fl-node-8thbn9vq50ix .jkw-rss-grid {
   display: flex !important;
   flex-wrap: nowrap !important;
   gap: 15px !important;
@@ -11972,7 +11972,7 @@ div.fl-node-u8yoctmaji9q .pp-heading-content .pp-heading-separator.icon_only spa
   scroll-padding-right: 0% !important;
   padding: 20px 0 !important;
 }
-.fl-node-8thbn9vq50ix .haroop-rss-card {
+.fl-node-8thbn9vq50ix .jkw-rss-card {
   /* 고객님 설정 유지 */
   flex: 0 0 17% !important;
   box-sizing: border-box !important;
@@ -11985,12 +11985,12 @@ div.fl-node-u8yoctmaji9q .pp-heading-content .pp-heading-separator.icon_only spa
   transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease !important;
   scroll-snap-align: start !important;
 }
-.fl-node-8thbn9vq50ix .haroop-rss-card a {
+.fl-node-8thbn9vq50ix .jkw-rss-card a {
   display: block !important;
   height: 100% !important;
   width: 100% !important;
 }
-.fl-node-8thbn9vq50ix .haroop-rss-card-title {
+.fl-node-8thbn9vq50ix .jkw-rss-card-title {
   font-size: 20px !important;
   font-weight: 400 !important;
   /* ✅ absolute 설정으로 인해 footer 영역을 침범하지 않도록 margin-bottom 조정 */
@@ -11998,12 +11998,12 @@ div.fl-node-u8yoctmaji9q .pp-heading-content .pp-heading-separator.icon_only spa
   line-height: 1.4 !important;
   color: #333 !important;
 }
-.fl-node-8thbn9vq50ix .haroop-rss-card-body {
+.fl-node-8thbn9vq50ix .jkw-rss-card-body {
   font-size: 16px !important;
   color: #555 !important;
   line-height: 1.6 !important;
 }
-.fl-node-8thbn9vq50ix .haroop-rss-card-footer {
+.fl-node-8thbn9vq50ix .jkw-rss-card-footer {
   display: block !important;
   font-weight: 500 !important;
   font-size: 15px !important;
@@ -12017,49 +12017,49 @@ div.fl-node-u8yoctmaji9q .pp-heading-content .pp-heading-separator.icon_only spa
   padding: 0 !important;
   margin-top: 0 !important;
 }
-.fl-node-8thbn9vq50ix .haroop-rss-card-footer a, .fl-node-8thbn9vq50ix .haroop-rss-card-footer .url {
+.fl-node-8thbn9vq50ix .jkw-rss-card-footer a, .fl-node-8thbn9vq50ix .jkw-rss-card-footer .url {
   color: #1d5157 !important;
   display: block !important;
   /* 💥 링크 요소에 혹시 모를 배경이 있다면 제거 */
   background: transparent !important;
 }
-.fl-node-8thbn9vq50ix .haroop-rss-card:hover {
+.fl-node-8thbn9vq50ix .jkw-rss-card:hover {
   transform: translateY(-20px) !important;
   z-index: 10 !important;
   background: #d6be9f !important;
   box-shadow: none !important;
 }
-.fl-node-8thbn9vq50ix .haroop-rss-card:hover .haroop-rss-card-title {
+.fl-node-8thbn9vq50ix .jkw-rss-card:hover .jkw-rss-card-title {
   color: #fff !important;
 }
-.fl-node-8thbn9vq50ix .haroop-rss-card:hover .haroop-rss-card-footer a, .fl-node-8thbn9vq50ix .haroop-rss-card:hover .haroop-rss-card-footer .url {
+.fl-node-8thbn9vq50ix .jkw-rss-card:hover .jkw-rss-card-footer a, .fl-node-8thbn9vq50ix .jkw-rss-card:hover .jkw-rss-card-footer .url {
   color: #fff !important;
   /* Hover 시 흰색으로 변경 */
   /* 팁: Hover 시 배경색을 다시 추가하여 버튼 효과를 줄 수도 있습니다. */
   /* background: rgba(0, 0, 0, 0.1); */
 }
 @media (max-width: 1200px) {
-  .fl-node-8thbn9vq50ix .haroop-rss-grid {
+  .fl-node-8thbn9vq50ix .jkw-rss-grid {
     scroll-padding-left: 5% !important;
     scroll-padding-right: 5% !important;
     scroll-snap-align: start !important;
   }
-  .fl-node-8thbn9vq50ix .haroop-rss-card {
+  .fl-node-8thbn9vq50ix .jkw-rss-card {
     flex: 0 0 calc(50% - 12.5px) !important;
   }
-  .fl-node-8thbn9vq50ix .haroop-rss-card-footer {
+  .fl-node-8thbn9vq50ix .jkw-rss-card-footer {
     width: calc(100% - 60px) !important;
   }
 }
 @media (max-width: 768px) {
-  .fl-node-8thbn9vq50ix .haroop-rss-grid {
+  .fl-node-8thbn9vq50ix .jkw-rss-grid {
     scroll-padding-left: 0px !important;
     scroll-padding-right: 0px !important;
   }
-  .fl-node-8thbn9vq50ix .haroop-rss-card {
+  .fl-node-8thbn9vq50ix .jkw-rss-card {
     flex: 0 0 100% !important;
   }
-  .fl-node-8thbn9vq50ix .haroop-rss-card-footer {
+  .fl-node-8thbn9vq50ix .jkw-rss-card-footer {
     width: calc(100% - 60px) !important;
   }
 }
