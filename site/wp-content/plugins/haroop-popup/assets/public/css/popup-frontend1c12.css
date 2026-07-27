@@ -1,0 +1,623 @@
+/* 하룹팝업 프론트엔드 스타일 */
+
+/* CSS 변수 정의 */
+:root {
+    --haroop-popup-padding: 20px;
+    --haroop-popup-gap: 10px;
+    --haroop-popup-radius: 10px;
+    --haroop-popup-bg: #ffffff;
+    --haroop-popup-border-width: 0px;
+    --haroop-popup-border-color: #dddddd;
+    --haroop-popup-text: #333333;
+    --haroop-popup-button-bg: #333333;
+    --haroop-popup-button-text: #ffffff;
+    --haroop-popup-button-hover: #555555;
+    --haroop-popup-font-size: 14px;
+    --haroop-popup-font-weight: normal;
+    --haroop-popup-line-height: 1.5;
+}
+
+/* 오버레이 */
+.haroop-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99998;
+    display: none;
+}
+
+/* 디바이스별 표시 제어 - 수정됨 */
+/* 기본적으로 모든 팝업은 숨김 상태로 시작 */
+.haroop-popup {
+    display: none;
+}
+
+/* JavaScript가 표시할 때만 보이도록 함 */
+.haroop-popup.haroop-popup-active {
+    display: block !important;
+}
+
+/* 기본 팝업 스타일 */
+.haroop-popup {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    background: var(--haroop-popup-bg);
+    padding: var(--haroop-popup-padding);
+    border-radius: var(--haroop-popup-radius);
+    border: var(--haroop-popup-border-width) solid var(--haroop-popup-border-color);
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    z-index: 99999 !important;
+    max-height: 90vh;
+    overflow-y: auto;
+    color: var(--haroop-popup-text);
+    font-size: var(--haroop-popup-font-size);
+    font-weight: var(--haroop-popup-font-weight);
+    line-height: var(--haroop-popup-line-height);
+}
+
+/* 커스텀 CSS 변수 적용 */
+.haroop-popup[style*="--popup-padding"] {
+    padding: var(--popup-padding) !important;
+}
+
+.haroop-popup[style*="--popup-radius"] {
+    border-radius: var(--popup-radius) !important;
+}
+
+.haroop-popup[style*="--popup-bg"] {
+    background: var(--popup-bg) !important;
+}
+
+.haroop-popup[style*="--popup-text"] {
+    color: var(--popup-text) !important;
+}
+
+.haroop-popup[style*="--popup-font-size"] {
+    font-size: var(--popup-font-size) !important;
+}
+
+.haroop-popup[style*="--popup-font-weight"] {
+    font-weight: var(--popup-font-weight) !important;
+}
+
+.haroop-popup[style*="--popup-line-height"] {
+    line-height: var(--popup-line-height) !important;
+}
+
+.haroop-popup[style*="--popup-border-width"] {
+    border-width: var(--popup-border-width) !important;
+    border-style: solid;
+}
+
+.haroop-popup[style*="--popup-border-color"] {
+    border-color: var(--popup-border-color) !important;
+}
+
+/* 이미지 스타일 */
+.haroop-popup img,
+.haroop-popup-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.haroop-popup a {
+    display: block;
+    line-height: 0;
+}
+
+/* 슬라이드형 팝업 */
+.haroop-popup-slide .haroop-slide-container {
+    position: relative;
+    border-radius: var(--haroop-popup-radius) var(--haroop-popup-radius) 0 0;
+    overflow: hidden;
+}
+
+.haroop-popup-slide .haroop-slide {
+    display: none;
+}
+
+.haroop-popup-slide .haroop-slide:first-child {
+    display: block;
+}
+
+/* 슬라이드 컨트롤 */
+.haroop-slide-controls {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.haroop-popup button:hover {
+    border: none;
+}
+
+.haroop-slide-button {
+    flex: 1;
+    padding: 12px 10px;
+    background: #f8f8f8;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #999;
+    font-size: 14px;
+    border-radius: var(--haroop-popup-radius, 4px); 
+}
+
+.haroop-slide-button:hover {
+    background: #e8e8e8;
+}
+
+.haroop-slide-button.active {
+    background: #333;
+    color: #fff;
+}
+
+/* 커스텀 슬라이드 탭 스타일 */
+.haroop-popup[style*="--popup-tab-bg"] .haroop-slide-button,
+.haroop-popup[style*="--popup-tab-text"] .haroop-slide-button {
+    background: var(--popup-tab-bg, #f8f8f8);
+    color: var(--popup-tab-text, #999);
+}
+
+.haroop-popup[style*="--popup-tab-bg-hover"] .haroop-slide-button:hover,
+.haroop-popup[style*="--popup-tab-text-hover"] .haroop-slide-button:hover {
+    background: var(--popup-tab-bg-hover, #e8e8e8);
+    color: var(--popup-tab-text-hover, #666);
+}
+
+.haroop-popup[style*="--popup-tab-bg-active"] .haroop-slide-button.active,
+.haroop-popup[style*="--popup-tab-text-active"] .haroop-slide-button.active {
+    background: var(--popup-tab-bg-active, #333);
+    color: var(--popup-tab-text-active, #fff);
+}
+
+/* 커스텀 레이아웃 변수 */
+.haroop-popup[style*="--popup-tab-gap"] .haroop-slide-controls {
+    gap: var(--popup-tab-gap);
+}
+
+.haroop-popup[style*="--popup-tab-margin"] .haroop-slide-controls {
+    margin-bottom: var(--popup-tab-margin);
+}
+
+.haroop-popup[style*="--popup-footer-margin"] .haroop-popup-footer {
+    margin-top: var(--popup-footer-margin);
+}
+
+/* 일반형 팝업 */
+.haroop-popup-general {
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.haroop-general-container {
+    display: grid;
+    gap: var(--popup-gap, 10px);
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.haroop-general-item {
+    background: transparent;
+    border-radius: var(--haroop-popup-radius);
+    border: none;
+    overflow: hidden;
+    box-shadow: none;
+    position: relative;
+}
+
+/* 일반형 레이아웃 - 1줄 */
+.haroop-layout-1row .haroop-general-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    max-width: 900px;
+}
+
+/* 일반형 레이아웃 - 2줄 */
+.haroop-layout-2rows .haroop-general-container {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
+}
+
+/* 팝업 푸터 (버튼 영역) */
+.haroop-popup-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin-top: 15px;
+    padding: 0;
+    background: var(--haroop-popup-button-bg);
+    overflow: hidden;
+}
+
+.haroop-popup-slide .haroop-popup-footer {
+    margin: 0;
+    margin-top: 0;
+    padding: 0;
+    border-radius: 0 0 var(--haroop-popup-radius) var(--haroop-popup-radius);
+}
+
+.haroop-general-item .haroop-popup-footer {
+    margin: 0;
+    padding: 0;
+}
+
+/* 버튼 스타일 */
+.haroop-popup-footer button,
+.haroop-popup-footer a {
+    flex: 1;
+    padding: 12px 15px;
+    background: transparent;
+    border: none;
+    color: var(--haroop-popup-button-text);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+    position: relative;
+    margin: 0;
+    border-radius: 0;
+}
+
+.haroop-popup-footer button:not(:last-child),
+.haroop-popup-footer a:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.haroop-popup-footer button:hover,
+.haroop-popup-footer a:hover {
+    background: var(--haroop-popup-button-hover);
+    color: #fff !important;
+    border: none !important; /* 추가 */
+    outline: none !important; /* 추가 */
+}
+
+/* 자세히 보기 링크 특별 처리 */
+.haroop-popup-detail {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    line-height: normal !important;
+}
+
+.haroop-popup-detail:hover {
+    color: #fff !important;
+    text-decoration: none;
+    background: var(--haroop-popup-button-hover) !important;
+}
+
+/* 커스텀 CSS 변수 적용 */
+.haroop-popup[style*="--popup-button-bg"] .haroop-popup-footer,
+.haroop-popup-footer[style*="--popup-button-bg"] {
+    background: var(--popup-button-bg) !important;
+}
+
+.haroop-popup[style*="--popup-button-text"] .haroop-popup-footer button,
+.haroop-popup[style*="--popup-button-text"] .haroop-popup-footer a,
+.haroop-popup-footer button[style*="--popup-button-text"],
+.haroop-popup-footer a[style*="--popup-button-text"] {
+    color: var(--popup-button-text) !important;
+}
+
+.haroop-popup[style*="--popup-button-hover"] .haroop-popup-footer button:hover,
+.haroop-popup[style*="--popup-button-hover"] .haroop-popup-footer a:hover,
+.haroop-popup-footer button:hover[style*="--popup-button-hover"],
+.haroop-popup-footer a:hover[style*="--popup-button-hover"] {
+    background: var(--popup-button-hover) !important;
+    color: var(--popup-button-text-hover, #fff) !important;
+}
+
+/* 닫기 버튼만 있을 때 */
+.haroop-popup-close-only {
+    border-right: none !important;
+}
+
+/* 전체 닫기 버튼 - 하단만 사용 */
+.haroop-global-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.haroop-global-close-bottom-wrap {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.haroop-global-close-bottom {
+    padding: 12px 30px;
+    background: var(--haroop-popup-button-bg);
+    color: var(--haroop-popup-button-text);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.haroop-global-close-bottom:hover {
+    background: var(--haroop-popup-button-hover);
+}
+
+/* 디자인 프리셋 - 기본형 */
+.haroop-preset-default {
+    /* 기본값 사용 */
+}
+
+/* 디자인 프리셋 - 모던형 */
+.haroop-preset-modern {
+    --haroop-popup-padding: 0px;
+    --haroop-popup-radius: 0px;
+    --haroop-popup-bg: #ffffff;
+    --haroop-popup-text: #ccc;
+    --haroop-popup-button-bg: #000000;
+    --haroop-popup-button-text: #ffffff;
+    --haroop-popup-button-hover: #333333;
+    --haroop-popup-font-weight: 300;
+    --haroop-popup-line-height: 1.6;
+}
+
+/* 모던형 버튼 호버 색상 통일 */
+.haroop-preset-modern .haroop-popup-footer button:hover,
+.haroop-preset-modern .haroop-popup-footer a:hover {
+    background: var(--haroop-popup-button-hover, #333333) !important;
+    color: var(--haroop-popup-button-text-hover, #fff) !important;
+}
+
+.haroop-preset-modern .haroop-slide-controls {
+    gap: 0;
+    margin-bottom: 0;
+}
+
+.haroop-preset-modern .haroop-slide-button {
+    background: #f5f5f5;
+    color: #999;
+    border-radius: 0;
+}
+
+.haroop-preset-modern .haroop-slide-button.active {
+    background: #000;
+    color: #fff;
+    border: none;
+}
+
+/* 디자인 프리셋 - 미니멀형 */
+.haroop-preset-minimal {
+    --haroop-popup-padding: 30px;
+    --haroop-popup-radius: 0px;
+    --haroop-popup-border-width: 1px;
+    --haroop-popup-border-color: #e0e0e0;
+    --haroop-popup-bg: #ffffff;
+    --haroop-popup-text: #666666;
+    --haroop-popup-button-bg: transparent;
+    --haroop-popup-button-text: #666666;
+    --haroop-popup-button-hover: #000000;
+    --haroop-popup-font-size: 13px;
+    --haroop-popup-line-height: 1.8;
+    box-shadow: none;
+}
+
+.haroop-preset-minimal .haroop-popup-footer {
+    background: transparent;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+.haroop-preset-minimal .haroop-popup-footer button,
+.haroop-preset-minimal .haroop-popup-footer a {
+    color: #666;
+}
+
+.haroop-preset-minimal .haroop-popup-footer button:hover,
+.haroop-preset-minimal .haroop-popup-footer a:hover {
+    color: #fff;
+    background: #333;
+}
+
+.haroop-preset-minimal .haroop-slide-button {
+    background: transparent;
+    color: #999;
+    border: 1px solid #e0e0e0;
+}
+
+.haroop-preset-minimal .haroop-slide-button:hover {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+}
+
+.haroop-preset-minimal .haroop-slide-button.active {
+    background: #f5f5f5;
+    color: #000;
+    border-color: #666;
+}
+
+.haroop-preset-minimal .haroop-popup-overlay {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* 반응형 - 태블릿 */
+@media screen and (max-width: 991px) {
+    .haroop-popup {
+        position: fixed !important;
+        width: 90% !important;
+        max-width: 500px !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        margin: 0 !important;
+    }
+    
+    /* 모바일에서 일반형 팝업 겹침 처리 */
+    .haroop-popup-general {
+        padding: 20px !important;
+        background: var(--haroop-popup-bg) !important;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3) !important;
+        border: var(--haroop-popup-border-width) solid var(--haroop-popup-border-color) !important;
+        border-radius: var(--haroop-popup-radius) !important;
+    }
+    
+    .haroop-popup-general .haroop-general-container {
+        display: block !important;
+        gap: 0 !important;
+    }
+    
+    .haroop-popup-general .haroop-general-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+    }
+    
+    .haroop-popup-general .haroop-general-item.active {
+        display: block !important;
+    }
+    
+    .haroop-popup-general .haroop-general-item:first-child {
+        display: block;
+    }
+    
+    .haroop-popup-footer {
+        flex-wrap: wrap;
+    }
+    
+    .haroop-popup-footer button,
+    .haroop-popup-footer a {
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+    
+    .haroop-slide-controls {
+        flex-wrap: wrap;
+    }
+    
+    .haroop-slide-button {
+        min-width: calc(50% - 2.5px);
+        font-size: 13px;
+        padding: 10px 8px;
+    }
+    
+    /* 전체 닫기 버튼 숨김 (모바일) */
+    .haroop-global-close-bottom-wrap {
+        display: none;
+    }
+}
+
+/* 반응형 - 모바일 */
+@media screen and (max-width: 480px) {
+    .haroop-popup {
+        position: fixed !important;
+        width: 95% !important;
+        padding: 15px;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        margin: 0 !important;
+    }
+    
+    .haroop-preset-minimal {
+        --haroop-popup-padding: 20px;
+    }
+    
+    .haroop-popup-footer button,
+    .haroop-popup-footer a {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+    
+    .haroop-slide-button {
+        font-size: 12px;
+        padding: 8px 5px;
+    }
+}
+
+/* 스크롤바 스타일 */
+.haroop-popup::-webkit-scrollbar {
+    width: 8px;
+}
+
+.haroop-popup::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.haroop-popup::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.haroop-popup::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* 애니메이션 */
+@keyframes haroopFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -48%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes haroopFadeOut {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -52%);
+    }
+}
+
+/* 접근성 */
+.haroop-popup:focus-visible,
+.haroop-popup button:focus-visible,
+.haroop-popup a:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px;
+}
+
+/* 프린트 시 숨김 */
+@media print {
+    .haroop-popup,
+    .haroop-popup-overlay {
+        display: none !important;
+    }
+}
+
+/* 디버깅 도우미 클래스 */
+.haroop-debug-visible {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    border: 2px solid red !important;
+}
+
+.haroop-debug-info::before {
+    content: attr(data-debug);
+    position: absolute;
+    top: -20px;
+    left: 0;
+    background: red;
+    color: white;
+    padding: 2px 5px;
+    font-size: 10px;
+    z-index: 100000;
+}
