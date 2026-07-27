@@ -6,6 +6,8 @@
 - **백엔드**: 원본의 상담신청(문의) 기능을 PHP + MySQL 로 새로 구현
   - 문의 접수 → DB 저장
   - 관리자 로그인 → 문의 목록/상세 조회, 처리상태·메모 관리
+  - **이메일 알림** → 문의 접수 시 관리자 이메일(다중)로 자동 발송 (자체 SMTP 메일러)
+- **외부 의존 제거**: 외주(하룹) 플러그인 흔적 제거, 외부 CDN 자산 로컬화, 추적 스크립트 제거
 
 > 정적 프론트 파일(용량 큼)은 별도 저장소 `sunnworks/jk.withme` 에 있습니다.
 > 이 저장소에는 **백엔드 + 통합 도구 + 설치 가이드**가 들어있습니다.
@@ -17,13 +19,15 @@ backend/                  PHP + MySQL 백엔드
 ├── schema.sql            DB 스키마 (문의/관리자 테이블 + 기본 관리자)
 ├── config.sample.php     설정 예시 (복사해서 config.php 로 사용)
 ├── db.php                DB 연결(PDO)
-├── submit.php            상담신청 접수 처리
+├── submit.php            상담신청 접수 처리(+이메일 알림 트리거)
+├── mailer.php            자체 개발 메일러(PHP mail + SMTP 클라이언트)
 ├── submit-endpoint.js    정적 폼을 백엔드로 연결하는 클라이언트 스크립트
 ├── .htaccess             민감파일 접근 차단
 └── admin/                관리자 페이지
     ├── login.php / logout.php
     ├── index.php         문의 목록(검색·필터·페이징)
     ├── view.php          문의 상세(상태변경·메모·삭제)
+    ├── settings.php      이메일 알림 설정(수신자 다중·SMTP)
     └── password.php      비밀번호 변경
 
 tools/

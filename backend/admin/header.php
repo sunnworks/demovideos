@@ -57,6 +57,7 @@ $__title = $__title ?? '관리자';
   <div class="brand">JK<span>위드미</span> 관리자</div>
   <nav>
     <a href="index.php">문의 목록</a>
+    <a href="settings.php">이메일 알림</a>
     <a href="password.php">비밀번호 변경</a>
     <a href="logout.php">로그아웃</a>
   </nav>

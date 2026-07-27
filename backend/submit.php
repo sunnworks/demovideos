@@ -16,6 +16,7 @@
 declare(strict_types=1);
 
 require __DIR__ . '/db.php';
+require __DIR__ . '/mailer.php';
 
 $config = jk_config();
 
@@ -127,6 +128,20 @@ try {
 } catch (PDOException $e) {
     error_log('[JK] inquiry insert failed: ' . $e->getMessage());
     respond(false, '접수 처리 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.', $config);
+}
+
+// --- 관리자 이메일 알림 (실패해도 접수 자체는 성공 처리) ---
+try {
+    jkw_notify_new_inquiry([
+        'name'        => $name,
+        'contact'     => $contact,
+        'category'    => $category,
+        'message'     => $message,
+        'source_page' => (string)($_POST['inquiry_page'] ?? ($_SERVER['HTTP_REFERER'] ?? '')),
+        'created_at'  => date('Y-m-d H:i:s'),
+    ]);
+} catch (Throwable $e) {
+    error_log('[JK] notify failed: ' . $e->getMessage());
 }
 
 respond(true, '상담신청이 정상적으로 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.', $config);

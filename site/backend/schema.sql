@@ -39,6 +39,32 @@ CREATE TABLE IF NOT EXISTS `inquiries` (
   COMMENT='상담신청 접수 내역';
 
 -- ---------------------------------------------------------------------
+-- 사이트 설정 테이블 (key-value)
+--   이메일 알림 수신자, 발송 방식(SMTP/mail) 등을 관리자페이지에서 변경
+-- ---------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `settings` (
+  `skey`   VARCHAR(50)  NOT NULL COMMENT '설정 키',
+  `svalue` TEXT         NULL     COMMENT '설정 값',
+  PRIMARY KEY (`skey`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  COMMENT='사이트 설정';
+
+-- 이메일 알림 기본값
+--   notify_emails : 문의 알림을 받을 관리자 이메일(줄바꿈 또는 쉼표로 여러 명)
+INSERT INTO `settings` (`skey`, `svalue`) VALUES
+  ('notify_enabled', '1'),
+  ('notify_emails',  'famdeju06@gmail.com, famdeju02@naver.com'),
+  ('mail_method',    'mail'),          -- 'mail'(호스팅 기본) 또는 'smtp'
+  ('from_name',      'JK위드미 홈페이지'),
+  ('from_email',     ''),              -- 발신 이메일(비우면 no-reply@도메인 자동)
+  ('smtp_host',      ''),
+  ('smtp_port',      '465'),
+  ('smtp_secure',    'ssl'),           -- 'ssl'(465) 또는 'tls'(587) 또는 ''(없음)
+  ('smtp_user',      ''),
+  ('smtp_pass',      '')
+ON DUPLICATE KEY UPDATE `skey` = `skey`;
+
+-- ---------------------------------------------------------------------
 -- 관리자 계정 테이블
 --   비밀번호는 PHP password_hash()로 저장(평문 저장 금지)
 -- ---------------------------------------------------------------------
