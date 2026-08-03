@@ -1,0 +1,6 @@
+# 실제 DB 접속정보 (절대 커밋 금지)
+backend/config.php
+
+# 로컬 테스트 산출물
+*.db
+*.sqlite
